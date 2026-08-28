@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 public class StatusConsultaExternaClient {
 
     public CobrancaStatusEnum consultar(String txid) {
-        return CobrancaStatusEnum.SOLICITADA;
+        if (txid == null || txid.isBlank()) {
+            return CobrancaStatusEnum.SOLICITADA;
+        }
+
+        return CobrancaStatusEnum.FINALIZADA;
     }
 }

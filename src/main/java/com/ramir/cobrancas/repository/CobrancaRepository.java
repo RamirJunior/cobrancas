@@ -11,4 +11,6 @@ public interface CobrancaRepository extends JpaRepository<Cobranca, Long> {
     Optional<Cobranca> findTopByTxidOrderByIdDesc(String txid);
 
     Optional<Cobranca> findByTransactionId(String transactionId);
+
+    Optional<Cobranca> findTopByCobrancaPaiIdOrderByIdDesc(Long cobrancaPaiId);
 }

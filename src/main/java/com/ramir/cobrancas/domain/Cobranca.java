@@ -23,6 +23,7 @@ public class Cobranca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String idUsuario;
     private String nomeSolicitante;
 
@@ -47,4 +48,8 @@ public class Cobranca {
     private LocalDateTime dataCriacao;
     private LocalDateTime dataExpiracao;
     private LocalDateTime dataFinalizada;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cobranca_pai_id")
+    private Cobranca cobrancaPai;
 }

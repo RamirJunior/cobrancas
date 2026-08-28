@@ -4,6 +4,7 @@ import com.ramir.cobrancas.exceptions.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
 import java.util.function.Supplier;
 
 @Component
@@ -13,9 +14,8 @@ public class LockExecutor {
     private final LockService lockService;
 
     public <T> T execute(String key, Supplier<T> action) {
-
-        if (!lockService.lock(key)) {
-            throw new BusinessException("Geração de cobrança em processamento.");
+        if (!lockService.lock(key, Duration.ofSeconds(5))) {
+            throw new BusinessException("Geracao de cobranca em andamento.");
         }
 
         try {

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 public class CheckoutValidationClient {
 
     public String validar(String transactionId, CheckoutValidationDTO dto) {
-        return "AUTORIZADO";
+        return "AUTORIZADO:" + transactionId + ":" + dto.getCavv();
     }
 }
